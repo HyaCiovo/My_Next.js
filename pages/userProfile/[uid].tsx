@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 
-const user = ({ userName, userPhone, userSex }) => {
+const user = ({ userId, userName, userPhone, userSex }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,6 +13,12 @@ const user = ({ userName, userPhone, userSex }) => {
       <main className={styles.main}>
         <h2>
           Server Side Render(SSR) 服务端渲染
+        </h2>
+        <h2>
+          动态路由页面
+        </h2>
+        <h2>
+          {`userId:${userId}`}
         </h2>
         <h2>
           {`userName:${userName}`}
@@ -30,9 +36,18 @@ const user = ({ userName, userPhone, userSex }) => {
 };
 
 export const getServerSideProps = (ctx) => {
-  // const { params, req, res } = ctx
+  const { params, req, res } = ctx
+  console.log('res', res, 'req', req)
+  const id = params.uid
+  if (Number(id) > 10) {
+    return { redirect: '/about' }
+  }
+  if (Number(id) > 5) {
+    return { notFound: true }
+  }
   return {
     props: {
+      userId: id,
       userName: 'Mr.Zhu',
       userPhone: '138****6743',
       userSex: 'male'

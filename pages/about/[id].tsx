@@ -4,7 +4,7 @@ import styles from '../../styles/Home.module.css'
 
 const page = ({ post }) => {
   const router = useRouter()
-  console.log(router.query['id'])
+  console.log(router)
   return (
     <div className={styles.container}>
       <Head>

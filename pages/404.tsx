@@ -10,6 +10,7 @@ const NotFoundPage = () => {
     </Head>
 
     <main className={styles.main}>
+      <h1 style={{ color: '#0070F3', fontSize: '5rem' }}>404 NotFound</h1>
       <h1 className={styles.title}>
         哎呀！页面不见了/(ㄒoㄒ)/~~
       </h1>
